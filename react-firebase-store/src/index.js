@@ -3,16 +3,21 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-// 9버젼(모듈형)을 쓸때는 아래와 같이 쓸 필요없음
-// 8버젼 이하에서 사용하는 방식
-// 안에 있는 값을 꺼내지 않고 바로 실행 (from)
-import './database/firebase';
+import {BrowserRouter} from 'react-router-dom'
+
+import store from './store';
+import { Provider } from 'react-redux'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <Provider store={store}>
+    <BrowserRouter>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </BrowserRouter>
+  </Provider>
+
 );
 
 // If you want to start measuring performance in your app, pass a function
